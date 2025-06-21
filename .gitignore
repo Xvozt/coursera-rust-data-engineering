@@ -14,6 +14,9 @@
 # macOS files
 .DS_Store
 
+# local history
+**/.history/
+
 # Editor and IDE files
 .idea/
 .vscode/
