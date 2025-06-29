@@ -48,12 +48,12 @@ fn main() {
     fruit.push_back("Cherry".to_string());
 
     if let Some(back_fruit) = cli.back {
-        println!("Adding {} to the back of the fruit salad", back_fruit);
+        println!("Adding {back_fruit} to the back of the fruit salad");
         fruit.push_back(back_fruit);
     }
 
     if let Some(front_fruit) = cli.front {
-        println!("Adding {} to the front of the fruit salad", front_fruit);
+        println!("Adding {front_fruit} to the front of the fruit salad");
         fruit.push_front(front_fruit);
     }
 
@@ -68,7 +68,7 @@ fn main() {
     if cli.choose {
         let fruit_slice = fruit.make_contiguous();
         if let Some(random_fruit) = fruit_slice.choose(&mut rng) {
-            println!("Randomly chosen fruit is {}", random_fruit);
+            println!("Randomly chosen fruit is {random_fruit}");
         } else {
             println!("No fruits available to choose from");
         }
@@ -76,7 +76,7 @@ fn main() {
 
     if cli.remove {
         if let Some(removed_fruit) = fruit.pop_front() {
-            println!("Removed fruit is: {}", removed_fruit);
+            println!("Removed fruit is: {removed_fruit}");
         } else {
             println!("Nothing to remove");
         }
@@ -86,9 +86,9 @@ fn main() {
     println!("Fruit Salad:");
     for (i, item) in fruit.iter().enumerate() {
         if i != fruit.len() - 1 {
-            print!("{}, ", item);
+            print!("{item}, ");
         } else {
-            println!("{}", item);
+            println!("{item}");
         }
     }
 }

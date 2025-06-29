@@ -22,5 +22,5 @@ fn main() {
 
     let frequencies = frequencies(example);
 
-    println!("Frequency of each number in the example is: {:?}", frequencies);
+    println!("Frequency of each number in the example is: {frequencies:?}");
 }

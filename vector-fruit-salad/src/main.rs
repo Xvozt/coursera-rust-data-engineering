@@ -34,7 +34,7 @@ fn main() {
     ];
 
     // Additional fruits that can be randomly added
-    let additional_fruits = vec![
+    let additional_fruits = [
         "Banana".to_string(),
         "Strawberry".to_string(),
         "Blueberry".to_string(),
@@ -47,18 +47,18 @@ fn main() {
     
     // add user fruit
     if let Some(user_fruit) = cli.fruit {
-        println!("Adding {} to the fruit salad", user_fruit);
+        println!("Adding {user_fruit} to the fruit salad");
         fruits.push(user_fruit);
     }
     
     // add user defined random number of aditional fruits
     if let Some(random_num) = cli.random {
         let mut rng = rng();
-        println!("Adding {} random fruits to the salad", random_num);
+        println!("Adding {random_num} random fruits to the salad");
 
         for _ in 0..random_num {
             if let Some(random_fruit) = additional_fruits.choose(&mut rng).cloned() {
-                println!("Added random fruit: {}", random_fruit);
+                println!("Added random fruit: {random_fruit}");
                 fruits.push(random_fruit);
             }
         }
@@ -71,16 +71,16 @@ fn main() {
     fruits.shuffle(&mut rng);
 
     if let Some(user_number) = cli.number {
-        println!("Taking only {} fruits to the salad", user_number);
+        println!("Taking only {user_number} fruits to the salad");
         let actual_number = min(user_number, fruits.len());
 
         println!("Fruit Salad:");
 
         for (i, item) in fruits.iter().enumerate().take(actual_number) {
             if i != actual_number - 1 {
-                print!("{}, ", item);
+                print!("{item}, ");
             } else {
-                print!("{}", item);
+                print!("{item}");
             }
         }
     } else {
@@ -88,9 +88,9 @@ fn main() {
         println!("Fruit salad:");
         for (i, item) in fruits.iter().enumerate() {
             if i != fruits.len() - 1 {
-                print!("{}, ", item);
+                print!("{item}, ");
             } else {
-                print!("{}", item);
+                print!("{item}");
             }
         }
     } 

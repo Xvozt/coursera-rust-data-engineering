@@ -56,7 +56,7 @@ fn main() {
 
     if cli.random {
         if let Some(randomized_fruit) = fruit.choose(&mut rng) {
-            println!("You selected random fruit: {}", randomized_fruit);
+            println!("You selected random fruit: {randomized_fruit}");
         }
     }
 
@@ -73,7 +73,7 @@ fn main() {
         if let Some((pos, name)) = add_command.split_once(":") {
             if let Ok(position) = pos.parse::<usize>() {
                 if position <= fruit.len() {
-                    println!("Adding {} at position {}", name, position);
+                    println!("Adding {name} at position {position}");
                     let mut tail = LinkedList::new();
 
                     for _ in 0..fruit.len() - position {
@@ -107,7 +107,7 @@ fn main() {
             }
 
             if let Some(removed) = fruit.pop_back() {
-                println!("Removed fruit at position {}: {}", to_delete_pos, removed);
+                println!("Removed fruit at position {to_delete_pos}: {removed}");
             }
 
             fruit.append(&mut tail);
@@ -126,9 +126,9 @@ fn print_fruit_salad(salad: LinkedList<String>) {
     println!("Fruit Salad:");
     for (i, item) in salad.iter().enumerate() {
         if i != salad.len() - 1 {
-            print!("{}, ", item);
+            print!("{item}, ");
         } else {
-            println!("{}", item);
+            println!("{item}");
         }
     }
 }
