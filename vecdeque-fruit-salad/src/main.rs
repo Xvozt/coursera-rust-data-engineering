@@ -8,11 +8,10 @@ A VecDeque is a double-ended queue, which means that you can push and pop from b
 of the queue.
 */
 
-use rand::seq::{IndexedRandom, SliceRandom}; // rand is a random number generation library in Rust
-use rand::rng;
-use std::collections::VecDeque;
 use clap::Parser;
-
+use rand::rng;
+use rand::seq::{IndexedRandom, SliceRandom}; // rand is a random number generation library in Rust
+use std::collections::VecDeque;
 
 #[derive(Debug, Parser)]
 struct Cli {
@@ -24,7 +23,6 @@ struct Cli {
     choose: bool,
     #[clap(short, long)]
     remove: bool,
-
 }
 fn main() {
     let cli = Cli::parse();
@@ -80,7 +78,6 @@ fn main() {
         } else {
             println!("Nothing to remove");
         }
-        
     }
     // Print out the fruit salad
     println!("Fruit Salad:");

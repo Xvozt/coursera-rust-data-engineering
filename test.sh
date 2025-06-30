@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-## Format all code directories in the repostitory using cargo fmt.
+## Test all code directories in the repostitory using cargo test.
 
 for DIR in */; do
     DIRNAME=$(basename "$DIR")

@@ -1,6 +1,6 @@
-use std::{collections::HashMap};
+use std::collections::HashMap;
 use std::fs::File;
-use std::io::{prelude::*, BufReader};
+use std::io::{BufReader, prelude::*};
 
 pub fn count_words(path: &str) -> std::io::Result<HashMap<String, u32>> {
     let file = File::open(path)?;
@@ -12,7 +12,9 @@ pub fn count_words(path: &str) -> std::io::Result<HashMap<String, u32>> {
         let line = line?;
 
         for word in line.split_whitespace() {
-            let word = word.trim_matches(|c: char| !c.is_alphanumeric()).to_lowercase();
+            let word = word
+                .trim_matches(|c: char| !c.is_alphanumeric())
+                .to_lowercase();
             if !word.is_empty() {
                 *frequency_map.entry(word).or_insert(0) += 1;
             }

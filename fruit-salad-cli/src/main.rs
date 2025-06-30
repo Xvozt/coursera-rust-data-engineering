@@ -11,7 +11,7 @@ struct Opts {
     #[clap(short, long)]
     number: usize,
     #[clap(short, long, num_args = 1..)]
-    mine: Option<Vec<String>>
+    mine: Option<Vec<String>>,
 }
 
 fn main() {
@@ -29,13 +29,13 @@ fn main() {
                 salad.len(),
                 salad
             );
-        },
+        }
         None => {
             let mut salad = create_fruit_salad(num_fruits);
 
             salad.sort();
 
-             println!(
+            println!(
                 "Created fruit salad with {} fruits: {:?}",
                 salad.len(),
                 salad

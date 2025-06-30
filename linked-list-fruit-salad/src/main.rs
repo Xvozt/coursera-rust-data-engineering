@@ -6,7 +6,7 @@ Finally, it prints out the final fruit salad.
 
 This example shows how to use a LinkedList, but remember that LinkedList
 has a higher memory overhead and worse cache locality than Vec or VecDeque,
-so it's typically not the best choice unless you have a specific need for the properties 
+so it's typically not the best choice unless you have a specific need for the properties
 of a linked list. In Rust, it's usually better to use a Vec or VecDeque.
 
 A LinkedList is a doubly-linked list, which means that each element in the list
@@ -15,11 +15,10 @@ A great example of when to use a LinkedList is when you need to insert or remove
 from the middle of the list.
 */
 
-use rand::seq::{IndexedRandom, SliceRandom}; // rand is a random number generation library in Rust
-use rand::rng;
-use std::collections::LinkedList;
 use clap::Parser;
-
+use rand::rng;
+use rand::seq::{IndexedRandom, SliceRandom}; // rand is a random number generation library in Rust
+use std::collections::LinkedList;
 
 #[derive(Debug, Parser)]
 struct Cli {
@@ -34,7 +33,6 @@ struct Cli {
 }
 
 fn main() {
-
     let cli = Cli::parse();
 
     let mut fruit: LinkedList<String> = LinkedList::new();
@@ -43,9 +41,9 @@ fn main() {
     fruit.push_back("Strawberry Tree Berry".to_string());
 
     /*
-    Please note that converting a LinkedList to a Vec and back to a LinkedList 
-    isn't a common operation in practice. I included 
-    it in this example to keep the code as similar as possible 
+    Please note that converting a LinkedList to a Vec and back to a LinkedList
+    isn't a common operation in practice. I included
+    it in this example to keep the code as similar as possible
     to the original VecDeque example.
      */
 
@@ -68,7 +66,6 @@ fn main() {
     fruit.push_back("Fig".to_string());
     fruit.push_back("Cherry".to_string());
 
-
     if let Some(add_command) = cli.add {
         if let Some((pos, name)) = add_command.split_once(":") {
             if let Ok(position) = pos.parse::<usize>() {
@@ -85,7 +82,11 @@ fn main() {
                     fruit.push_back(name.to_string());
                     fruit.append(&mut tail);
                 } else {
-                    println!("Error: Position {} is out of range. The list has {} items", position, fruit.len());
+                    println!(
+                        "Error: Position {} is out of range. The list has {} items",
+                        position,
+                        fruit.len()
+                    );
                 }
             } else {
                 println!("Invalid position format. Use number for position");
@@ -95,11 +96,9 @@ fn main() {
         }
     }
 
-
-
     if let Some(to_delete_pos) = cli.remove_pos {
         if to_delete_pos < fruit.len() {
-            let mut tail:LinkedList<String> = LinkedList::new();
+            let mut tail: LinkedList<String> = LinkedList::new();
             for _ in 0..fruit.len() - to_delete_pos - 1 {
                 if let Some(item) = fruit.pop_back() {
                     tail.push_front(item);
@@ -113,13 +112,16 @@ fn main() {
             fruit.append(&mut tail);
             print_fruit_salad(fruit);
         } else {
-            println!("Error: Position {} is out of range. The list has {} items", to_delete_pos, fruit.len())
+            println!(
+                "Error: Position {} is out of range. The list has {} items",
+                to_delete_pos,
+                fruit.len()
+            )
         }
     } else {
         print_fruit_salad(fruit);
     }
     // Print out the fruit salad
-    
 }
 
 fn print_fruit_salad(salad: LinkedList<String>) {

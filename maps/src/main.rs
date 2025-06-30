@@ -9,7 +9,7 @@ fn frequencies(numbers: Vec<i32>) -> Vec<(i32, u32)> {
     }
 
     let mut result = Vec::new();
-    
+
     for (num, frequency) in frequencies {
         result.push((num, frequency));
     }
@@ -18,7 +18,7 @@ fn frequencies(numbers: Vec<i32>) -> Vec<(i32, u32)> {
 }
 
 fn main() {
-    let example = vec![1,2,3,4,5,6,7,8,-5,3,4,-5];
+    let example = vec![1, 2, 3, 4, 5, 6, 7, 8, -5, 3, 4, -5];
 
     let frequencies = frequencies(example);
 

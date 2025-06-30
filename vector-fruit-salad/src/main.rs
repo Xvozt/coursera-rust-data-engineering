@@ -4,9 +4,9 @@ A vector is a growable array. It can grow or shrink in size and is one of the mo
 useful data structures in Rust. A vector is represented using the Vec<T> type.
 */
 
-use rand::seq::{IndexedRandom, SliceRandom}; // rand is a random number generation library in Rust
-use rand::rng;
 use clap::Parser;
+use rand::rng;
+use rand::seq::{IndexedRandom, SliceRandom}; // rand is a random number generation library in Rust
 use std::cmp::min;
 
 #[derive(Debug, Parser)]
@@ -20,9 +20,8 @@ struct Cli {
 }
 
 fn main() {
-
     let cli = Cli::parse();
-    
+
     let mut fruits = vec![
         "Orange".to_string(),
         "Fig".to_string(),
@@ -44,13 +43,13 @@ fn main() {
         "Watermelon".to_string(),
         "Grape".to_string(),
     ];
-    
+
     // add user fruit
     if let Some(user_fruit) = cli.fruit {
         println!("Adding {user_fruit} to the fruit salad");
         fruits.push(user_fruit);
     }
-    
+
     // add user defined random number of aditional fruits
     if let Some(random_num) = cli.random {
         let mut rng = rng();
@@ -64,9 +63,7 @@ fn main() {
         }
     }
 
-  
-
-    // Scramble (shuffle) the fruit 
+    // Scramble (shuffle) the fruit
     let mut rng = rng();
     fruits.shuffle(&mut rng);
 
@@ -93,6 +90,5 @@ fn main() {
                 print!("{item}");
             }
         }
-    } 
-    
+    }
 }

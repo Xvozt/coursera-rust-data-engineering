@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-## Format all code directories in the repostitory using cargo fmt.
+## Lint all code directories in the repostitory using cargo clippy.
 
 for DIR in */; do
     DIRNAME=$(basename "$DIR")
@@ -7,4 +7,4 @@ for DIR in */; do
     (cd $DIR && cargo clippy --all-targets --all-features -- -D warnings)
 done
 
-echo "Format complete."
+echo "Lint complete."

@@ -6,3 +6,7 @@ lint:
 test:
 	@echo "Testing all projects with cargo"
 	./test.sh
+
+format:
+	@echo "Formatting all projects with cargo"
+	./format.sh
