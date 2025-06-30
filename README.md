@@ -1,15 +1,17 @@
 ## Data Engineering with Rust
 
-This course should teach me how to build high performance data pipelines using rust.
+This course should help me to understand how to build high performance data pipelines using rust.
 
 ### Structure
 
-#### Collections
-
-##### Getting started
+#### Module 1. Collections
 
 ##### Sequences and maps
 
+`maps`, `vector-fruit-salad`, `linked-list-fruit-salad`, `vecdeque-fruit-salad`, `fruit-salad-cli`, `word-counter`, `hashamp-languages`
+
 ##### Sets, graphs and miscellaneous data structures
+
+
 
 ##### Reflections
