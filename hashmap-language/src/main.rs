@@ -1,4 +1,11 @@
+use clap::Parser;
 use std::collections::HashMap;
+
+#[derive(Debug, Parser)]
+struct Cli {
+    #[clap(short, long)]
+    lang: Option<String>,
+}
 
 fn init_languages() -> HashMap<String, i32> {
     let mut languages = HashMap::new();
@@ -41,11 +48,23 @@ fn calculate_weights(years_active: &mut HashMap<String, i32>) -> HashMap<String,
 }
 
 fn main() {
+    let cli = Cli::parse();
+
     let mut languages = init_languages();
+    if let Some(lang) = cli.lang {
+        if let Some((lang, year)) = lang.split_once("-") {
+            if let Ok(year) = year.parse::<i32>() {
+                languages.insert(lang.to_string(), year);
+            }
+        }
+    }
     let weights = calculate_weights(&mut languages);
 
+    let mut weights_sorted: Vec<(String, i32)> = weights.into_iter().collect();
+    weights_sorted.sort_by(|a, b| a.1.cmp(&b.1));
+
     println!("Language weighing from 1-100 by age (1 is newest and 100 is oldest):");
-    for (language, weight) in &weights {
+    for (language, weight) in &weights_sorted {
         println!("{language}: {weight}");
     }
 }
